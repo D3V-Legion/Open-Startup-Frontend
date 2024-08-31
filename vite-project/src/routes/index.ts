@@ -13,5 +13,17 @@ export const routes:Paths[] = [
   {
    path:'/admin',
     element:()=> import('../pages/Admin.tsx'),
-  }
+  },
+  {
+   path:'/service',
+    element:()=> import('../pages/Service.tsx'),
+  },
+  {
+   path:'/about',
+    element:()=> import('../pages/About.tsx'),
+  },
+  {
+   path:'/register',
+    element:()=> import('../pages/Register.tsx'),
+  },
 ]
