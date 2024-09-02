@@ -3,6 +3,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ModeToggle } from "../mode-toogle";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
+import { Button } from "../ui/button";
+import { MenuIcon } from "lucide-react";
 
 const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
   //Constante que usare para saber en que ruta estoy
@@ -64,55 +67,80 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
       </div>
       <div className="flex items-center gap-3">
         <div className="hidden md:flex">
-        {isLoggedIn ? (
-          <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-            Admin Panel
-          </button>
-        ) : (
-          <>
-            <button
-              onClick={handleLoginClick}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
-            >
-              Login
+          {isLoggedIn ? (
+            <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+              Admin Panel
             </button>
-            <button
-              onClick={handleRegisterClick}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Register
-            </button>
-          </>
-        )}
+          ) : (
+            <>
+              <button
+                onClick={handleLoginClick}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-3"
+              >
+                Login
+              </button>
+              <button
+                onClick={handleRegisterClick}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Register
+              </button>
+            </>
+          )}
         </div>
 
         <ModeToggle />
       </div>
-      <div className="md:hidden flex items-center">
-      <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={() => {
-            // Toggle dropdown menu
-            const dropdownMenu = document.getElementById('dropdown-menu');
-            dropdownMenu.classList.toggle('hidden');
-          }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-      </div>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button variant="outline" size="icon" className="md:hidden">
+            <MenuIcon className="h-6 w-6" />
+            <span className="sr-only">Toggle navigation menu</span>
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="right" className="md:hidden">
+          <div className="grid gap-4 p-4">
+            <Link
+              to="/"
+              className="rounded-md bg-accent px-4 py-2 text-accent-foreground transition-colors hover:bg-accent/90"
+            >
+              Home
+            </Link>
+            <Link
+              to="/about"
+              className="rounded-md px-4 py-2 transition-colors hover:bg-muted"
+            >
+              About
+            </Link>
+            <Link
+              to="/service"
+              className="rounded-md px-4 py-2 transition-colors hover:bg-muted"
+            >
+              Services
+            </Link>
+            {isLoggedIn ? (
+              <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                Admin Panel
+              </button>
+            ) : (
+              <>
+                <button
+                  onClick={handleLoginClick}
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
+                >
+                  Login
+                </button>
+                <button
+                  onClick={handleRegisterClick}
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Register
+                </button>
+              </>
+            )}
+          </div>
+        </SheetContent>
+      </Sheet>
     </nav>
   );
 };
