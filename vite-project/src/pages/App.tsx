@@ -2,14 +2,13 @@ import React, { useState } from 'react'
 import reactLogo from '../assets/react.svg'
 
 import '../App.css'
-import Navbar from '@/components/global/Navbar'
+
 
 const App:React.FC =()=> {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <Navbar/>
       <div>
       <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
       Taxing Laughter: The Joke Tax Chronicles

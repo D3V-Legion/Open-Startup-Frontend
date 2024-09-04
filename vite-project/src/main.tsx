@@ -6,6 +6,7 @@ import AppRouter from './AppRouter.tsx'
 import { ThemeProvider } from './components/theme-provider.tsx'
 
 
+
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')!).render(

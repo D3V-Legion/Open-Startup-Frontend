@@ -25,7 +25,7 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
   };
 
   return (
-    <nav className="flex justify-between items-center py-4">
+    <nav className="flex justify-between items-center py-4 ">
       <div className="flex items-center">
         <Link to="/" className={`text-lg font-bold hover:text-gray-700 `}>
           Open Startup
@@ -88,10 +88,13 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
             </>
           )}
         </div>
-
-        <ModeToggle />
+        <div className="hidden md:flex">
+                  <ModeToggle />
+        </div>
       </div>
-      <Sheet>
+      <div className="gap-2 flex md:hidden">
+      <ModeToggle />
+ <Sheet>
         <SheetTrigger asChild>
           <Button variant="outline" size="icon" className="md:hidden">
             <MenuIcon className="h-6 w-6" />
@@ -102,19 +105,19 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
           <div className="grid gap-4 p-4">
             <Link
               to="/"
-              className="rounded-md bg-accent px-4 py-2 text-accent-foreground transition-colors hover:bg-accent/90"
+              className={`rounded-md px-4 py-2 text-accent-foreground transition-colors hover:bg-accent/90 ${location.pathname === "/" ?  "bg-accent": ""}`}
             >
               Home
             </Link>
             <Link
               to="/about"
-              className="rounded-md px-4 py-2 transition-colors hover:bg-muted"
+              className={`rounded-md px-4 py-2 transition-colors hover:bg-muted ${location.pathname === "/about" ?  "bg-accent": ""}`}
             >
               About
             </Link>
             <Link
               to="/service"
-              className="rounded-md px-4 py-2 transition-colors hover:bg-muted"
+              className={`rounded-md px-4 py-2 transition-colors hover:bg-muted ${location.pathname === "/service" ?  "bg-accent": ""}`}
             >
               Services
             </Link>
@@ -141,6 +144,8 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
           </div>
         </SheetContent>
       </Sheet>
+      </div>
+     
     </nav>
   );
 };
