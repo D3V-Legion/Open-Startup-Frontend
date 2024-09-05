@@ -36,8 +36,8 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
           <li className="mr-6">
             <Link
               to="/"
-              className={`hover:text-gray-700 ${
-                location.pathname === "/" ? "text-blue-700" : ""
+              className={`hover:text-gray-700 font-semibold ${
+                location.pathname === "/" ? "text-primary hover:text-primary-foreground" : ""
               }`}
             >
               Home
@@ -46,8 +46,8 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
           <li className="mr-6">
             <Link
               to="/about"
-              className={`hover:text-gray-700 ${
-                location.pathname === "/about" ? "text-blue-700" : ""
+              className={`hover:text-gray-700 font-semibold ${
+                location.pathname === "/about" ? "text-primary hover:text-primary-foreground" : ""
               }`}
             >
               About
@@ -56,8 +56,8 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
           <li className="mr-6">
             <Link
               to="/service"
-              className={`hover:text-gray-700 ${
-                location.pathname === "/service" ? "text-blue-700" : ""
+              className={`hover:text-gray-700 font-semibold ${
+                location.pathname === "/service" ? "text-primary hover:text-primary-foreground font-semibold" : ""
               }`}
             >
               Service
@@ -73,18 +73,19 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
             </button>
           ) : (
             <>
-              <button
+              <Button
                 onClick={handleLoginClick}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-3"
+                className="bg-primary hover:bg-primary-foreground text-white font-semibold py-2 px-4 rounded mr-3"
               >
                 Login
-              </button>
-              <button
+              </Button>
+              <Button
+                variant='outline'
                 onClick={handleRegisterClick}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className=" font-semibold py-2 px-4 rounded"
               >
                 Register
-              </button>
+              </Button>
             </>
           )}
         </div>
@@ -122,23 +123,24 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
               Services
             </Link>
             {isLoggedIn ? (
-              <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+              <Button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 Admin Panel
-              </button>
+              </Button>
             ) : (
               <>
-                <button
+                <Button
                   onClick={handleLoginClick}
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
+                  className="bg-primary hover:bg-primary-foreground text-white font-semibold py-2 px-4 rounded "
                 >
                   Login
-                </button>
-                <button
+                </Button>
+                <Button
+                variant='outline'
                   onClick={handleRegisterClick}
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  className=" font-semibold py-2 px-4 rounded"
                 >
                   Register
-                </button>
+                </Button>
               </>
             )}
           </div>
