@@ -10,6 +10,17 @@ export interface NavbarProps {
 }
 
 export interface ServiceResponse {
-  data?: unknown; // tipo de datos que esperas en caso de éxito
-  error?: string; // Aquí se espera el mensaje de error
+  data?: unknown; 
+  error?: string; 
 };
+
+export interface LoginResponse {
+  token?: string; 
+  error?: string; 
+};
+
+export interface SessionContextProps {
+  token: string | null;
+  isAuthenticated: boolean;
+}
+
