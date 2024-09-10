@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
 import { MenuIcon } from "lucide-react";
+import Logo from '../../../public/logo.png'
 
 const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
   //Constante que usare para saber en que ruta estoy
@@ -27,7 +28,8 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
   return (
     <nav className="flex justify-between items-center py-4 ">
       <div className="flex items-center">
-        <Link to="/" className={`text-lg font-bold hover:text-gray-700 `}>
+        <Link to="/" className={`flex items-center space-x-2 text-lg font-bold text-secondary gap-2 `}>
+        <img className="w-9 h-9" src={Logo} alt="Logotipo" />
           Open Startup
         </Link>
       </div>
