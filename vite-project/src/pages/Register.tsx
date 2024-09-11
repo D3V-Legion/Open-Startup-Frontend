@@ -3,7 +3,11 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
-import SmallIcon from '../../public/register1.png'
+import SmallIcon from '/register1.png'
+import { Link } from 'react-router-dom'
+import { UserSchema,userSchema } from '@/validations/validationSchemas'
+import {useForm} from 'react-hook-form'
+import {zodResolver} from '@hookform/resolvers/zod'
 
 
 export default function Component() {
@@ -16,23 +20,24 @@ export default function Component() {
 
   const [step, setStep] = useState(1)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setFormData(prevData => ({
-      ...prevData,
-      [name]: value
-    }))
-  }
+  // Configuración de react-hook-form con zod usando el esquema importado
+  const { register, handleSubmit, formState: { errors }, trigger } = useForm<UserSchema>({
+    resolver: zodResolver(userSchema),
+  }); 
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const onSubmit = (data: UserSchema) => {
     // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData)
+    console.log('Form submitted:', data)
   }
 
-  const handleNextStep = () => {
-    setStep(2)
+   // Manejo del botón "Next" para pasar al siguiente paso si la validación es correcta
+   const handleNextStep = async () => {
+    const isStepValid = await trigger(['name', 'lastName']);
+    if (isStepValid) {
+      setStep(2);
+    }
   }
+
 
   const handlePreviousStep = () => {
     setStep(1)
@@ -40,7 +45,8 @@ export default function Component() {
 
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <main className="min-h-[75vh] flex items-center justify-center">
+         <Card className="w-full max-w-md mx-auto mx-4">
       <CardHeader>
       <div className="flex items-center justify-between">
           <div className='text-left'>
@@ -51,30 +57,28 @@ export default function Component() {
         </div>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {step === 1 && (
             <>
               <div className="flex flex-col space-y-2">
                 <Label htmlFor="name" className="text-left">Name</Label>
                 <Input 
                   id="name" 
-                  name="name" 
                   type="text" 
                   required 
-                  value={formData.name}
-                  onChange={handleChange}
+                  {...register('name')}
                 />
+                {errors.name && <p className="text-red-500 text-sm text-left">{errors.name.message}</p>}
               </div>
               <div className="flex flex-col space-y-2">
                 <Label htmlFor="lastName" className="text-left">Last Name</Label>
                 <Input 
                   id="lastName" 
-                  name="lastName" 
                   type="text" 
                   required 
-                  value={formData.lastName}
-                  onChange={handleChange}
+                  {...register('lastName')}
                 />
+                {errors.lastName && <p className="text-red-500 text-sm  text-left">{errors.lastName.message}</p>}
               </div>
               <Button type="button" className="w-full text-white hover:bg-primary-foreground" onClick={handleNextStep}>
                 Next
@@ -88,23 +92,21 @@ export default function Component() {
                 <Label htmlFor="email" className="text-left">Email</Label>
                 <Input 
                   id="email" 
-                  name="email" 
                   type="email" 
                   required 
-                  value={formData.email}
-                  onChange={handleChange}
+                  {...register('email')}
                 />
+                 {errors.email && <p className="text-red-500 text-sm  text-left">{errors.email.message}</p>}
               </div>
               <div className="flex flex-col space-y-2">
                 <Label htmlFor="password" className="text-left">Password</Label>
                 <Input 
                   id="password" 
-                  name="password" 
                   type="password" 
                   required 
-                  value={formData.password}
-                  onChange={handleChange}
+                  {...register('password')}
                 />
+                   {errors.password && <p className="text-red-500 text-sm  text-left">{errors.password.message}</p>}
               </div>
               <div className="flex justify-between gap-2 ">
                 <Button type="button" className="w-1/3  text-white bg-secondary hover:bg-secondary-foreground" onClick={handlePreviousStep}>
@@ -120,9 +122,10 @@ export default function Component() {
       </CardContent>
       <CardFooter className="flex justify-center">
         <p className="text-sm text-muted-foreground">
-          Already have an account? <a href="#" className="text-primary hover:underline">Sign in</a>
+          Already have an account? <Link to="/login" className="text-primary hover:underline">Sign in</Link>
         </p>
       </CardFooter>
     </Card>
+    </main>
   )
 }
