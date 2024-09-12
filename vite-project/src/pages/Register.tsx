@@ -11,12 +11,6 @@ import {zodResolver} from '@hookform/resolvers/zod'
 
 
 export default function Component() {
-  const [formData, setFormData] = useState({
-    name: '',
-    lastName: '',
-    email: '',
-    password: '',
-  })
 
   const [step, setStep] = useState(1)
 
@@ -46,7 +40,7 @@ export default function Component() {
 
   return (
     <main className="min-h-[75vh] flex items-center justify-center">
-         <Card className="w-full max-w-md mx-auto mx-4">
+         <Card className="w-full max-w-md mx-4">
       <CardHeader>
       <div className="flex items-center justify-between">
           <div className='text-left'>
