@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import cohete from "../../public/cohete1.png";
+import cohete from "/cohete1.png";
 
 import "../App.css";
 
