@@ -8,11 +8,17 @@ import { Link } from 'react-router-dom'
 import { UserSchema,userSchema } from '@/validations/validationSchemas'
 import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
+import { Checkbox } from '@/components/ui/checkbox'
 
 
 export default function Component() {
 
   const [step, setStep] = useState(1)
+  const [isTermsAccepted, setIsTermsAccepted] = useState(false); //estado para terminos y condiciones.
+  const [password,setPassword] = useState('');
+  const [passwordComfirm,setPasswordComfirm] = useState('');
+  const [passwordMatch, setPasswordMatch] = useState(true);
+
 
   // Configuración de react-hook-form con zod usando el esquema importado
   const { register, handleSubmit, formState: { errors }, trigger } = useForm<UserSchema>({
@@ -31,6 +37,19 @@ export default function Component() {
       setStep(2);
     }
   }
+
+  //Validar si las contraseñas coinciden. 
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setPassword(value);
+    setPasswordMatch(value === passwordComfirm);
+  };
+
+  const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setPasswordComfirm(value);
+    setPasswordMatch(value === password);
+  };
 
 
   const handlePreviousStep = () => {
@@ -99,14 +118,38 @@ export default function Component() {
                   type="password" 
                   required 
                   {...register('password')}
+                  onChange={handlePasswordChange}
                 />
                    {errors.password && <p className="text-red-500 text-sm  text-left">{errors.password.message}</p>}
               </div>
+              <div className="flex flex-col space-y-2">
+                  <Label htmlFor="confirmPassword" className="text-left">Confirm Password</Label>
+                  <Input 
+                    id="confirmPassword" 
+                    type="password" 
+                    required 
+                    value={passwordComfirm}
+                    onChange={handleConfirmPasswordChange}
+                  />
+                  {!passwordMatch && (
+                    <p className="text-red-500 text-sm text-left">Passwords do not match</p>
+                  )}
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    className='text-white border-secondary checked===true:bg-secondary'
+                    color='secondary'
+                    id="terms"
+                    checked={isTermsAccepted}
+                    onCheckedChange={(checked) => setIsTermsAccepted(checked === true)}
+                  />
+                  <Label htmlFor="terms">I accept the Terms and Conditions</Label>
+                </div>
               <div className="flex justify-between gap-2 ">
                 <Button type="button" className="w-1/3  text-white bg-secondary hover:bg-secondary-foreground" onClick={handlePreviousStep}>
                   Back
                 </Button>
-                <Button type="submit" className="w-2/3 text-white hover:bg-primary-foreground">
+                <Button type="submit" className="w-2/3 text-white hover:bg-primary-foreground" disabled={!isTermsAccepted || !passwordMatch}>
                   Register
                 </Button>
               </div>
