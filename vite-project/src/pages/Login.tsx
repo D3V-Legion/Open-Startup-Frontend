@@ -8,16 +8,32 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import SmallIcon from '/login1.png'
 import { Link } from 'react-router-dom'
+import { login } from '@/service/auth'
+import { useNavigate } from 'react-router-dom'
 
 
 const Login:React.FC= () => {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
   });
+  const navigate = useNavigate();
+
+  const handleLogin = async(email:string,password:string) => {
+    try {
+      const response = await login(email,password);
+      console.log(response)
+      if(!response.error){
+        navigate("/admin");
+      }
+    } catch (error:unknown) {
+      console.log(error)
+    }
+  }
 
   const onSubmit = (data: LoginSchema) => {
     console.log('Form submitted:', data);
     // Aquí podrías manejar el envío de datos al backend para el login
+    handleLogin(data.email,data.password);
   };
   return (
     <div className="min-h-[75vh] flex items-center justify-center px-4"> {/* Añadimos px-4 para margen en pantallas pequeñas */}

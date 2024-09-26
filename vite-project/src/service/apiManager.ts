@@ -2,9 +2,9 @@ import axios from 'axios'
 
 //Manejador de peticiones.
 const apiManager = axios.create({
-    baseURL:"https://openstartup.com",
+    baseURL:"https://ffdq9t4z-3000.use2.devtunnels.ms",
     headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
         'mode': 'no-cors'
     }
 })
