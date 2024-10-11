@@ -2,9 +2,17 @@ import { Button } from "@/components/ui/button";
 import cohete from "/cohete1.png";
 import IlustracionW from "../../public/ilustracion-home-w.png";
 import IlustracionB from "/ilustracion-home-b.png";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
 
 import "../App.css";
 import { Skeleton } from "@/components/ui/skeleton";
+import { faqItems } from "@/data/home";
 
 const App: React.FC = () => {
   return (
@@ -181,6 +189,43 @@ const App: React.FC = () => {
           </div>
         </div>
       </section>
+      <section className="min-h-[85vh] relative py-12 lg:py-20">
+  <div className="container px-4 md:px-6 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-10">
+    
+    {/* Columna izquierda */}
+    <div className="flex flex-col justify-center space-y-4 lg:space-y-6 text-start">
+      <h4 className="text-sm font-semibold uppercase tracking-wide text-primary">
+        FAQS
+      </h4>
+      <h2 className="text-4xl lg:text-4xl font-extrabold tracking-tight text-secondary">
+        Frequently Asked Questions
+      </h2>
+      <p className="text-base font-medium text-gray-700">
+        ¿Tienes más preguntas? Escríbenos a:{" "}
+        <p className="text-lg font-semibold mt-4">
+          openstartup@gmail.com
+        </p>
+      </p>
+    </div>
+
+    {/* Columna derecha: Preguntas frecuentes */}
+    <div className="w-full">
+      <Accordion type="single" collapsible className="w-full">
+        {faqItems.map((item, index) => (
+          <AccordionItem key={index} value={`item-${index}`}>
+            <AccordionTrigger className="text-left font-medium text-lg">
+              {item.question}
+            </AccordionTrigger>
+            <AccordionContent className="text-left">
+              {item.answer}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </div>
+  </div>
+</section>
+
     </main>
   );
 };
