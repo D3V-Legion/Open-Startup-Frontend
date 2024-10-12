@@ -17,18 +17,18 @@ const Admin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200 p-8">
+    <div className="min-h-screen bg-gradient-to-br bg-background p-8">
       
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
         <Card className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
           <CardHeader className="bg-secondary text-white p-6 transition-colors duration-300 group-hover:bg-secondary-foreground">
             <div className="flex justify-between items-center mb-2">
-              <CardTitle className="text-2xl font-semibold">Negotiation Plans</CardTitle>
+              <CardTitle className="text-2xl font-semibold">Planes de negociación </CardTitle>
               <Handshake size={28} />
             </div>
             <CardDescription className="text-indigo-100">
-              Strategize and execute winning deals
+            Desarrollar estrategias y ejecutar acuerdos ganadores
             </CardDescription>
           </CardHeader>
           <CardContent className="p-6">
@@ -49,7 +49,7 @@ const Admin = () => {
             <div className="flex justify-between items-center">
               <Badge className="bg-indigo-100 text-indigo-800 hover:bg-indigo-200">5 active plans</Badge>
               <Button className="bg-secondary hover:bg-secondary-foreground text-white">
-                View Plans <ChevronRight size={16} className="ml-2" />
+              Ver planes <ChevronRight size={16} className="ml-2" />
               </Button>
             </div>
           </CardContent>
@@ -58,11 +58,11 @@ const Admin = () => {
         <Card className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
           <CardHeader className="bg-primary text-white p-6 transition-colors duration-300 group-hover:bg-primary-foreground">
             <div className="flex justify-between items-center mb-2">
-              <CardTitle className="text-2xl font-semibold">Entrepreneurship Management</CardTitle>
+              <CardTitle className="text-2xl font-semibold">Gestión del emprendimiento</CardTitle>
               <Briefcase size={28} />
             </div>
             <CardDescription className="text-emerald-100">
-              Drive innovation and business growth
+            Impulsar la innovación y el crecimiento empresarial
             </CardDescription>
           </CardHeader>
           <CardContent className="p-6">
@@ -81,43 +81,43 @@ const Admin = () => {
               </li>
             </ul>
             <div className="flex justify-between items-center">
-              <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-200">3 active ventures</Badge>
+              <Badge className="bg-[#FFD1C1] text-primary hover:bg-emerald-200">3 active ventures</Badge>
               <Button className="bg-primary hover:bg-primary-foreground text-white">
-                Manage Ventures <ChevronRight size={16} className="ml-2" />
+              Gestionar emprendimientos <ChevronRight size={16} className="ml-2" />
               </Button>
             </div>
           </CardContent>
         </Card>
 
         <Card className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
-          <CardHeader className="bg-rose-600 text-white p-6 transition-colors duration-300 group-hover:bg-rose-700">
+          <CardHeader className="bg-[#56B889] text-white p-6 transition-colors duration-300 group-hover:bg-[#00A26B]">
             <div className="flex justify-between items-center mb-2">
-              <CardTitle className="text-2xl font-semibold">Communication & Collaboration</CardTitle>
+              <CardTitle className="text-2xl font-semibold">Comunicación y colaboración</CardTitle>
               <MessageCircle size={28} />
             </div>
             <CardDescription className="text-rose-100">
-              Enhance team synergy and productivity
+            Mejorar la sinergia y la productividad del equipo
             </CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <ul className="space-y-2 mb-4">
               <li className="flex items-center text-gray-700">
-                <ChevronRight size={18} className="text-rose-500 mr-2" />
+                <ChevronRight size={18} className="text-[#56B889] mr-2" />
                 Schedule team meetings
               </li>
               <li className="flex items-center text-gray-700">
-                <ChevronRight size={18} className="text-rose-500 mr-2" />
+                <ChevronRight size={18} className="text-[#56B889] mr-2" />
                 Manage project workflows
               </li>
               <li className="flex items-center text-gray-700">
-                <ChevronRight size={18} className="text-rose-500 mr-2" />
+                <ChevronRight size={18} className="text-[#56B889] mr-2" />
                 Foster idea sharing
               </li>
             </ul>
             <div className="flex justify-between items-center">
-              <Badge className="bg-rose-100 text-rose-800 hover:bg-rose-200">7 active projects</Badge>
-              <Button className="bg-rose-600 hover:bg-rose-700">
-                Collaborate Now <ChevronRight size={16} className="ml-2" />
+              <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-200">7 active projects</Badge>
+              <Button className="bg-[#56B889] hover:bg-[#00A26B] text-white ">
+              Colabora ahora <ChevronRight size={16} className="ml-2" />
               </Button>
             </div>
           </CardContent>
@@ -127,8 +127,8 @@ const Admin = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
-            <CardDescription>Your latest actions and updates</CardDescription>
+            <CardTitle>Actividad reciente</CardTitle>
+            <CardDescription>Tus últimas acciones y actualizaciones</CardDescription>
           </CardHeader>
           <CardContent>
             <ul className="space-y-4">
@@ -147,7 +147,7 @@ const Admin = () => {
                 </div>
               </li>
               <li className="flex items-center gap-4">
-                <Handshake size={18} className="text-indigo-500" />
+                <Handshake size={18} className="text-primary" />
                 <div>
                   <p className="text-sm font-medium">Updated negotiation plan: Client XYZ Partnership</p>
                   <p className="text-xs text-gray-500">2 days ago</p>
@@ -159,8 +159,8 @@ const Admin = () => {
 
         <Card>
           <CardHeader>
-            <CardTitle>Your Profile</CardTitle>
-            <CardDescription>Manage your account</CardDescription>
+            <CardTitle>Tu perfil</CardTitle>
+            <CardDescription>Administra tu cuenta</CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col items-center">
             <Avatar className="w-24 h-24 mb-4">
@@ -198,7 +198,7 @@ const Admin = () => {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Team Productivity</CardTitle>
-            <TrendingUp size={18} className="text-purple-500" />
+            <TrendingUp size={18} className="text-primary" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">87%</div>
@@ -216,7 +216,7 @@ const Admin = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="flex-grow"
           />
-          <Button type="submit">
+          <Button type="submit" className='text-white'>
             <Search size={18} className="mr-2" />
             Search
           </Button>
