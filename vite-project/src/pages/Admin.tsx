@@ -18,20 +18,11 @@ const Admin = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200 p-8">
-      <header className="mb-8">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-4xl font-bold text-gray-800">Welcome, Sarah</h1>
-          <Button variant="outline" className="gap-2">
-            <Bell size={18} />
-            Notifications <Badge variant="secondary">3</Badge>
-          </Button>
-        </div>
-        <p className="text-gray-600 text-xl italic">"The best way to predict the future is to create it." - Peter Drucker</p>
-      </header>
+      
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
         <Card className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
-          <CardHeader className="bg-indigo-600 text-white p-6 transition-colors duration-300 group-hover:bg-indigo-700">
+          <CardHeader className="bg-secondary text-white p-6 transition-colors duration-300 group-hover:bg-secondary-foreground">
             <div className="flex justify-between items-center mb-2">
               <CardTitle className="text-2xl font-semibold">Negotiation Plans</CardTitle>
               <Handshake size={28} />
@@ -57,7 +48,7 @@ const Admin = () => {
             </ul>
             <div className="flex justify-between items-center">
               <Badge className="bg-indigo-100 text-indigo-800 hover:bg-indigo-200">5 active plans</Badge>
-              <Button className="bg-indigo-600 hover:bg-indigo-700">
+              <Button className="bg-secondary hover:bg-secondary-foreground text-white">
                 View Plans <ChevronRight size={16} className="ml-2" />
               </Button>
             </div>
@@ -65,7 +56,7 @@ const Admin = () => {
         </Card>
 
         <Card className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
-          <CardHeader className="bg-emerald-600 text-white p-6 transition-colors duration-300 group-hover:bg-emerald-700">
+          <CardHeader className="bg-primary text-white p-6 transition-colors duration-300 group-hover:bg-primary-foreground">
             <div className="flex justify-between items-center mb-2">
               <CardTitle className="text-2xl font-semibold">Entrepreneurship Management</CardTitle>
               <Briefcase size={28} />
@@ -77,21 +68,21 @@ const Admin = () => {
           <CardContent className="p-6">
             <ul className="space-y-2 mb-4">
               <li className="flex items-center text-gray-700">
-                <ChevronRight size={18} className="text-emerald-500 mr-2" />
+                <ChevronRight size={18} className="text-primary mr-2" />
                 Track startup milestones
               </li>
               <li className="flex items-center text-gray-700">
-                <ChevronRight size={18} className="text-emerald-500 mr-2" />
+                <ChevronRight size={18} className="text-primary mr-2" />
                 Manage resource allocation
               </li>
               <li className="flex items-center text-gray-700">
-                <ChevronRight size={18} className="text-emerald-500 mr-2" />
+                <ChevronRight size={18} className="text-primary mr-2" />
                 Monitor market trends
               </li>
             </ul>
             <div className="flex justify-between items-center">
               <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-200">3 active ventures</Badge>
-              <Button className="bg-emerald-600 hover:bg-emerald-700">
+              <Button className="bg-primary hover:bg-primary-foreground text-white">
                 Manage Ventures <ChevronRight size={16} className="ml-2" />
               </Button>
             </div>
