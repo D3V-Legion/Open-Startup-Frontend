@@ -13,11 +13,19 @@
   transition: filter 400ms, transform 400ms;
   filter: drop-shadow(0 0 2em #24ACF2);
 }
-.logo:hover {
+.logo:hover,.about:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
-.logo.react:hover {
+.logo.react:hover, .about.react:hover{
   filter: drop-shadow(0 0 2em #0078A3);
+}
+
+.about{
+  cursor: pointer;
+  will-change: filter;
+  transition: filter 400ms;
+  transition: filter 400ms, transform 400ms;
+  filter: drop-shadow(0 0 2em #24ACF2);
 }
 
 @keyframes logo-spin {

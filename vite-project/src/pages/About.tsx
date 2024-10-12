@@ -1,13 +1,21 @@
 import { ArrowRight, CheckCircle, Users } from "lucide-react"
+import ilustracion from "../../public/about.png"
 
 export default function AboutUs() {
   return (
     <div className="min-h-screen bg-gradient-to-b">
-      <main className="container mx-auto px-4 py-16">
+      <main className="container mx-auto px-4 py-2">
         <section className="text-center mb-16">
-          <h1 className="text-4xl font-bold mb-4">About Us</h1>
+        <div className="flex justify-center align-middle">
+          <img
+            src={ilustracion}
+            className="about react w-80 h-80 sm:w-96 sm:h-96 object-contain animate-bounce-slow"
+            alt="React logo"
+          />
+        </div>
+          <h1 className="text-4xl font-bold mb-4">Sobre  <span className="text-primary">Nosotros</span></h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            We're a team of passionate individuals dedicated to creating innovative solutions for tomorrow's challenges.
+          Somos un equipo de personas apasionadas dedicadas a crear soluciones innovadoras para los desafíos del mañana.
           </p>
         </section>
 
