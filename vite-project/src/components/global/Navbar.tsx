@@ -1,11 +1,11 @@
 import { NavbarProps } from "@/models/type";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ModeToggle } from "../mode-toogle";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
-import { Bell, MenuIcon } from "lucide-react";
+import { Bell, MenuIcon, X } from "lucide-react";
 import Logo from '../../../public/logo.png'
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Badge } from "../ui/badge";
@@ -18,6 +18,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { ScrollArea } from "@/components/ui/scroll-area"
+
 
 const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
   //Constante que usare para saber en que ruta estoy
@@ -37,6 +40,16 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
   };
 
   const isAdminPage = location.pathname.includes('/admin');
+
+  const [notifications, setNotifications] = useState([
+    { id: 1, message: "Nueva actualización disponible", time: "Hace 5 minutos" },
+    { id: 2, message: "Tienes un nuevo mensaje", time: "Hace 10 minutos" },
+    { id: 3, message: "Recordatorio: Reunión a las 3 PM", time: "Hace 1 hora" },
+  ])
+
+  const clearNotification = (id: number) => {
+    setNotifications(notifications.filter(n => n.id !== id))
+  }
 
   return (
     <nav className={`flex justify-between items-center py-4 ${isAdminPage ? 'px-8 border-b-2' : ''}`}>
@@ -113,13 +126,46 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
         ):
         (
           <div className="flex items-center gap-3">
-             <Button variant="outline" size="icon" className="relative">
-                    <Bell className="h-5 w-5" />
+             <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline" size="icon" className="relative">
+                  <Bell className="h-5 w-5" />
+                  {notifications.length > 0 && (
                     <Badge className="absolute -top-2 -right-2 px-2 py-1" variant="destructive">
-                      3
+                      {notifications.length}
                     </Badge>
-                    <span className="sr-only">Notificaciones</span>
+                  )}
+                  <span className="sr-only">Notificaciones</span>
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-80">
+                <div className="flex justify-between items-center mb-2">
+                  <h3 className="font-semibold">Notificaciones</h3>
+                  <Button variant="ghost" size="sm" onClick={() => setNotifications([])}>
+                    Limpiar todo
                   </Button>
+                </div>
+                <ScrollArea className="h-[300px]">
+                  {notifications.length === 0 ? (
+                    <p className="text-center text-muted-foreground py-4">No hay notificaciones</p>
+                  ) : (
+                    notifications.map((notification) => (
+                      <div key={notification.id} className="mb-4 last:mb-0">
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <p className="text-sm">{notification.message}</p>
+                            <p className="text-xs text-muted-foreground">{notification.time}</p>
+                          </div>
+                          <Button variant="ghost" size="icon" onClick={() => clearNotification(notification.id)}>
+                            <X className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </ScrollArea>
+              </PopoverContent>
+            </Popover>
                   <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-10 w-10 rounded-full">
