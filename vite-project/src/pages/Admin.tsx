@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Handshake, Briefcase, MessageCircle, Bell, Search, TrendingUp, CheckCircle, ChevronRight } from "lucide-react"
+import { Handshake, Briefcase, MessageCircle, Search, TrendingUp, CheckCircle, ChevronRight } from "lucide-react"
 
 
 const Admin = () => {
@@ -18,8 +18,6 @@ const Admin = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br bg-background p-8">
-      
-
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
         <Card className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
           <CardHeader className="bg-secondary text-white p-6 transition-colors duration-300 group-hover:bg-secondary-foreground">

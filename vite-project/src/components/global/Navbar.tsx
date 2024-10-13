@@ -5,8 +5,10 @@ import { ModeToggle } from "../mode-toogle";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
-import { MenuIcon } from "lucide-react";
+import { Bell, MenuIcon } from "lucide-react";
 import Logo from '../../../public/logo.png'
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Badge } from "../ui/badge";
 
 const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
   //Constante que usare para saber en que ruta estoy
@@ -25,15 +27,19 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
     navigate("/register");
   };
 
+  const isAdminPage = location.pathname.includes('/admin');
+
   return (
-    <nav className="flex justify-between items-center py-4 ">
+    <nav className={`flex justify-between items-center py-4 ${isAdminPage ? 'px-8 border-b-2' : ''}`}>
       <div className="flex items-center">
         <Link to="/" className={`flex items-center space-x-2 text-lg font-bold text-secondary gap-2 `}>
         <img className="w-9 h-9" src={Logo} alt="Logotipo" />
           Open Startup
         </Link>
       </div>
-      <div className="hidden md:flex items-center">
+      {
+        !isAdminPage && (
+          <div className="hidden md:flex items-center">
         <ul className="flex items-center">
           <li className="mr-6">
             <Link
@@ -67,8 +73,12 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
           </li>
         </ul>
       </div>
+        )
+      }
       <div className="flex items-center gap-3">
-        <div className="hidden md:flex">
+      {
+        !isAdminPage ? (
+   <div className="hidden md:flex">
           {isLoggedIn ? (
             <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
               Admin Panel
@@ -91,6 +101,24 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
             </>
           )}
         </div>
+        ):
+        (
+          <div className="flex items-center gap-3">
+             <Button variant="outline" size="icon" className="relative">
+                    <Bell className="h-5 w-5" />
+                    <Badge className="absolute -top-2 -right-2 px-2 py-1" variant="destructive">
+                      3
+                    </Badge>
+                    <span className="sr-only">Notificaciones</span>
+                  </Button>
+                  <Avatar className="h-10 w-10">
+                    <AvatarImage src="/placeholder.svg?height=40&width=40" alt="@johndoe" />
+                    <AvatarFallback>JD</AvatarFallback>
+                  </Avatar>
+          </div>
+        )
+      }
+     
         <div className="hidden md:flex">
                   <ModeToggle />
         </div>
