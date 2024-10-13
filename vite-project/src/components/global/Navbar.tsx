@@ -9,6 +9,7 @@ import { Bell, MenuIcon } from "lucide-react";
 import Logo from '../../../public/logo.png'
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Badge } from "../ui/badge";
+import profile from "/profile.jpg";
 
 const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
   //Constante que usare para saber en que ruta estoy
@@ -32,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
   return (
     <nav className={`flex justify-between items-center py-4 ${isAdminPage ? 'px-8 border-b-2' : ''}`}>
       <div className="flex items-center">
-        <Link to="/" className={`flex items-center space-x-2 text-lg font-bold text-secondary gap-2 `}>
+        <Link to={isAdminPage ? "/admin" : "/"} className={`flex items-center space-x-2 text-lg font-bold text-secondary gap-2 `}>
         <img className="w-9 h-9" src={Logo} alt="Logotipo" />
           Open Startup
         </Link>
@@ -112,8 +113,8 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
                     <span className="sr-only">Notificaciones</span>
                   </Button>
                   <Avatar className="h-10 w-10">
-                    <AvatarImage src="/placeholder.svg?height=40&width=40" alt="@johndoe" />
-                    <AvatarFallback>JD</AvatarFallback>
+                    <AvatarImage src={profile} alt="@johndoe" />
+                    <AvatarFallback>SJ</AvatarFallback>
                   </Avatar>
           </div>
         )
@@ -123,7 +124,9 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
                   <ModeToggle />
         </div>
       </div>
-      <div className="gap-2 flex md:hidden">
+      {
+        !isAdminPage && (
+            <div className="gap-2 flex md:hidden">
       <ModeToggle />
  <Sheet>
         <SheetTrigger asChild>
@@ -177,7 +180,8 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
         </SheetContent>
       </Sheet>
       </div>
-     
+        )
+      } 
     </nav>
   );
 };

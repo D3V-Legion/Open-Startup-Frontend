@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Handshake, Briefcase, MessageCircle, Search, TrendingUp, CheckCircle, ChevronRight } from "lucide-react"
-
+import profile from "/profile.jpg"
+import { useNavigate } from 'react-router-dom'
 
 const Admin = () => {
   const [searchQuery, setSearchQuery] = useState('')
@@ -14,6 +15,17 @@ const Admin = () => {
     e.preventDefault()
     console.log('Searching for:', searchQuery)
     // Implement search functionality here
+  }
+
+  const navigate = useNavigate();
+  const enviarPaginaGestion =()=>{
+    navigate("/admin/gestion")
+  }
+  const enviarPaginaNegociacion =()=>{
+    navigate("/admin/negociacion")
+  }
+  const enviarPaginaColaboracion =()=>{
+    navigate("/admin/colaboracion")
   }
 
   return (
@@ -46,7 +58,7 @@ const Admin = () => {
             </ul>
             <div className="flex justify-between items-center">
               <Badge className="bg-indigo-100 text-indigo-800 hover:bg-indigo-200">5 active plans</Badge>
-              <Button className="bg-secondary hover:bg-secondary-foreground text-white">
+              <Button className="bg-secondary hover:bg-secondary-foreground text-white" onClick={enviarPaginaNegociacion}>
               Ver planes <ChevronRight size={16} className="ml-2" />
               </Button>
             </div>
@@ -80,7 +92,7 @@ const Admin = () => {
             </ul>
             <div className="flex justify-between items-center">
               <Badge className="bg-[#FFD1C1] text-primary hover:bg-emerald-200">3 active ventures</Badge>
-              <Button className="bg-primary hover:bg-primary-foreground text-white">
+              <Button className="bg-primary hover:bg-primary-foreground text-white" onClick={enviarPaginaGestion}>
               Gestionar emprendimientos <ChevronRight size={16} className="ml-2" />
               </Button>
             </div>
@@ -114,7 +126,7 @@ const Admin = () => {
             </ul>
             <div className="flex justify-between items-center">
               <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-200">7 active projects</Badge>
-              <Button className="bg-[#56B889] hover:bg-[#00A26B] text-white ">
+              <Button className="bg-[#56B889] hover:bg-[#00A26B] text-white " onClick={enviarPaginaColaboracion}>
               Colabora ahora <ChevronRight size={16} className="ml-2" />
               </Button>
             </div>
@@ -162,7 +174,7 @@ const Admin = () => {
           </CardHeader>
           <CardContent className="flex flex-col items-center">
             <Avatar className="w-24 h-24 mb-4">
-              <AvatarImage src="/placeholder-user.jpg" alt="Sarah Johnson" />
+              <AvatarImage src={profile} alt="Sarah Johnson" />
               <AvatarFallback>SJ</AvatarFallback>
             </Avatar>
             <h3 className="text-lg font-semibold">Sarah Johnson</h3>

@@ -15,6 +15,18 @@ export const routes:Paths[] = [
     element:()=> import('../pages/Admin.tsx'),
   },
   {
+    path:'/admin/gestion',
+    element:()=> import('../pages/Gestion.tsx')
+  },
+  {
+    path:'/admin/negociacion',
+    element:()=> import('../pages/Negociacion.tsx')
+  },
+  {
+    path:'/admin/colaboracion',
+    element:()=> import('../pages/Colaboracion.tsx')
+  },
+  {
    path:'/service',
     element:()=> import('../pages/Service.tsx'),
   },
