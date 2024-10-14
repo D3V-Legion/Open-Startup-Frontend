@@ -1,12 +1,20 @@
 import { ArrowRight, Briefcase, LineChart, MessageCircle, Star, Users } from "lucide-react"
+import ilustracion from "/service.png"
 
 
 const Service = () => {
   return (
     <div className="bg-background min-h-screen">
-      <header className="bg-primary text-primary-foreground py-12 text-center">
+      <header className=" py-12 text-center">
+      <div className="flex justify-center align-middle">
+          <img
+            src={ilustracion}
+            className="about react w-80 h-80 sm:w-96 sm:h-96 object-contain animate-bounce-slow"
+            alt="React logo"
+          />
+        </div>
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">Servicios para Startups</h1>
+          <h1 className="text-4xl font-bold mb-4">Servicios para <span className="text-primary">Startups</span> </h1>
           <p className="text-xl max-w-2xl mx-auto">
             Impulsamos el crecimiento de tu startup con soluciones integrales y personalizadas
           </p>
@@ -60,7 +68,7 @@ const Service = () => {
           </p>
           <a
             href="#"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
+            className="text-white inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
           >
             Únete Ahora <Users className="ml-2 h-5 w-5" />
           </a>
