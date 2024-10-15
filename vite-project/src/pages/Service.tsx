@@ -1,8 +1,13 @@
 import { ArrowRight, Briefcase, LineChart, MessageCircle, Star, Users } from "lucide-react"
 import ilustracion from "/service.png"
+import reseña1 from "/reseña1.jpg"
+import reseña2 from "/reseña2.jpg"
+import reseña3 from "/reseña3.jpg"
+
 
 
 const Service = () => {
+  
   return (
     <div className="bg-background min-h-screen">
       <header className=" py-12 text-center">
@@ -46,17 +51,17 @@ const Service = () => {
             <SuccessStory
               name="TechInnovate"
               description="Aumentó su valoración en un 300% en 6 meses con nuestros planes de negociación."
-              imageUrl="/placeholder.svg?height=100&width=100"
+              imageUrl={reseña1}
             />
             <SuccessStory
               name="EcoStartup"
               description="Expandió a 3 nuevos mercados utilizando nuestra gestión de emprendimiento."
-              imageUrl="/placeholder.svg?height=100&width=100"
+              imageUrl={reseña2}
             />
             <SuccessStory
               name="HealthTech Solutions"
               description="Mejoró la eficiencia interna en un 50% con nuestras herramientas de comunicación."
-              imageUrl="/placeholder.svg?height=100&width=100"
+              imageUrl={reseña3}
             />
           </div>
         </section>
@@ -67,7 +72,7 @@ const Service = () => {
             Conecta con otros emprendedores, accede a recursos exclusivos y participa en eventos de networking.
           </p>
           <a
-            href="#"
+            href="/register"
             className="text-white inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
           >
             Únete Ahora <Users className="ml-2 h-5 w-5" />
@@ -81,12 +86,12 @@ const Service = () => {
 function ServiceCard({ icon, title, description }) {
   return (
     <div className="bg-card text-card-foreground rounded-lg shadow-lg p-6 flex flex-col items-center text-center">
-      <div className="mb-4 text-primary">{icon}</div>
+      <div className="mb-4 text-secondary">{icon}</div>
       <h2 className="text-2xl font-semibold mb-4">{title}</h2>
       <p className="mb-6">{description}</p>
       <a
         href="#"
-        className="inline-flex items-center text-primary hover:text-primary/80 transition-colors"
+        className="inline-flex items-center text-secondary hover:text-primary/80 transition-colors"
       >
         Saber más <ArrowRight className="ml-2 w-4 h-4" />
       </a>
