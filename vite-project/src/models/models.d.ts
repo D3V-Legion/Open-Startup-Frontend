@@ -2,8 +2,8 @@
 export interface User{
     id:number;
     email:string;
-    name:string;
-    lastName:string;
+    firstname:string;
+    lastname:string;
     password:string;
     createdAt:Date;
     updatedAt:Date;

@@ -25,7 +25,7 @@ export const login = async (email:string, password:string): Promise<LoginRespons
     const setToken = useAuthStore.getState().setToken;
 
     try {
-        const response = await apiManager.post("auth/login", { email, password });
+        const response = await apiManager.post("/login", { email, password });
     
     const token = response.data.token;
     setToken(token); // Guardar el token en el estado global y localStorage
