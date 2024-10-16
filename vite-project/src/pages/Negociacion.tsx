@@ -46,10 +46,10 @@ const Negociacion = () => {
 
   return (
     <div className="min-h-screen bg-background px-8">
-      <h1 className="text-3xl font-bold text-center py-4">Negociación</h1>
+      
       
       {/* Menú deslizable con botones */}
-      <div className="w-full mb-8 relative">
+      <div className="w-full mb-8 relative mt-8">
         <div className="flex items-center">
           <Button
             variant="outline"

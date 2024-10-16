@@ -40,6 +40,9 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
   };
 
   const isAdminPage = location.pathname.includes('/admin');
+  const isAdminPageNegocicacion = location.pathname.includes('/admin/negociacion');
+  const isAdminPageGestion = location.pathname.includes('/admin/gestion');
+  const isAdminPageColaboracion = location.pathname.includes('/admin/colaboracion');
 
   const [notifications, setNotifications] = useState([
     { id: 1, message: "Nueva actualización disponible", time: "Hace 5 minutos" },
@@ -54,9 +57,9 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
   return (
     <nav className={`flex justify-between items-center py-4 ${isAdminPage ? 'px-8 border-b-2' : ''}`}>
       <div className="flex items-center">
-        <Link to={isAdminPage ? "/admin" : "/"} className={`flex items-center space-x-2 text-lg font-bold text-secondary gap-2 `}>
+        <Link to={isAdminPage ? "/admin" : "/"} className={`flex items-center space-x-2 text-lg font-bold ${!isAdminPage ? "text-secondary":""} gap-2 `}>
         <img className="w-9 h-9" src={Logo} alt="Logotipo" />
-          Open Startup
+          {isAdminPageNegocicacion ? 'Planes de Negociacion':isAdminPageGestion ? 'Gestion de emprendimiento': isAdminPageColaboracion ? 'Comunicacion y Colaboracion':'Open Startup'}
         </Link>
       </div>
       {
