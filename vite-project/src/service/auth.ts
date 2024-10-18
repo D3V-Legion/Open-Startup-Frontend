@@ -6,9 +6,9 @@ import { useAuthStore } from "@/store/authStore";
 
 
 // Servicio para registrar un nuevo usuario.
-export const register =async(userData:User): Promise<ServiceResponse> => {
+export const registerAuth =async(email:string,name:string,lastname:string,password:string): Promise<ServiceResponse> => {
     try {
-        const response = await apiManager.post("auth/register",userData);
+        const response = await apiManager.post("/register",{email,name,lastname,password});
         return {data: response.data};
     } catch (error:unknown) {
         // Devolver una acción indicando fallo

@@ -9,6 +9,7 @@ import { UserSchema,userSchema } from '@/validations/validationSchemas'
 import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import { Checkbox } from '@/components/ui/checkbox'
+import { registerAuth } from '@/service/auth'
 
 
 export default function Component() {
@@ -18,6 +19,8 @@ export default function Component() {
   const [password,setPassword] = useState('');
   const [passwordComfirm,setPasswordComfirm] = useState('');
   const [passwordMatch, setPasswordMatch] = useState(true);
+  const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
 
   // Configuración de react-hook-form con zod usando el esquema importado
@@ -25,14 +28,24 @@ export default function Component() {
     resolver: zodResolver(userSchema),
   }); 
 
-  const onSubmit = (data: UserSchema) => {
-    // Here you would typically send the form data to your backend
+  const onSubmit = async(data: UserSchema) => {
     console.log('Form submitted:', data)
+
+    const response = await registerAuth(data.email,data.name,data.lastname,data.password);
+    console.log('Esta es la respuesta',response);
+    if(response.error){
+      setError(response.error);
+      setSuccessMessage('');
+    }
+    else{
+      setSuccessMessage("Registro exitoso");
+      setError('');
+    }
   }
 
    // Manejo del botón "Next" para pasar al siguiente paso si la validación es correcta
    const handleNextStep = async () => {
-    const isStepValid = await trigger(['name', 'lastName']);
+    const isStepValid = await trigger(['name', 'lastname']);
     if (isStepValid) {
       setStep(2);
     }
@@ -89,9 +102,9 @@ export default function Component() {
                   id="lastName" 
                   type="text" 
                   required 
-                  {...register('lastName')}
+                  {...register('lastname')}
                 />
-                {errors.lastName && <p className="text-red-500 text-sm  text-left">{errors.lastName.message}</p>}
+                {errors.lastname && <p className="text-red-500 text-sm  text-left">{errors.lastname.message}</p>}
               </div>
               <Button type="button" className="w-full text-white hover:bg-primary-foreground" onClick={handleNextStep}>
                 Next
