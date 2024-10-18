@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import SmallIcon from '/register1.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { UserSchema,userSchema } from '@/validations/validationSchemas'
 import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
@@ -13,6 +13,8 @@ import { registerAuth } from '@/service/auth'
 
 
 export default function Component() {
+
+  const navigate = useNavigate();
 
   const [step, setStep] = useState(1)
   const [isTermsAccepted, setIsTermsAccepted] = useState(false); //estado para terminos y condiciones.
@@ -31,11 +33,12 @@ export default function Component() {
   const onSubmit = async(data: UserSchema) => {
     console.log('Form submitted:', data)
 
-    const response = await registerAuth(data.email,data.name,data.lastname,data.password);
+    const response = await registerAuth(data.email,data.firstname,data.lastname,data.password);
     console.log('Esta es la respuesta',response);
     if(response.error){
       setError(response.error);
       setSuccessMessage('');
+      redireccion();
     }
     else{
       setSuccessMessage("Registro exitoso");
@@ -45,10 +48,14 @@ export default function Component() {
 
    // Manejo del botón "Next" para pasar al siguiente paso si la validación es correcta
    const handleNextStep = async () => {
-    const isStepValid = await trigger(['name', 'lastname']);
+    const isStepValid = await trigger(['firstname', 'lastname']);
     if (isStepValid) {
       setStep(2);
     }
+  }
+
+  const redireccion =()=>{
+    navigate("admin")
   }
 
   //Validar si las contraseñas coinciden. 
@@ -64,11 +71,9 @@ export default function Component() {
     setPasswordMatch(value === password);
   };
 
-
   const handlePreviousStep = () => {
     setStep(1)
   }
-
 
   return (
     <main className="min-h-[75vh] flex items-center justify-center">
@@ -92,9 +97,9 @@ export default function Component() {
                   id="name" 
                   type="text" 
                   required 
-                  {...register('name')}
+                  {...register('firstname')}
                 />
-                {errors.name && <p className="text-red-500 text-sm text-left">{errors.name.message}</p>}
+                {errors.firstname && <p className="text-red-500 text-sm text-left">{errors.firstname.message}</p>}
               </div>
               <div className="flex flex-col space-y-2">
                 <Label htmlFor="lastName" className="text-left">Last Name</Label>

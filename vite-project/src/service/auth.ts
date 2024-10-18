@@ -6,15 +6,15 @@ import { useAuthStore } from "@/store/authStore";
 
 
 // Servicio para registrar un nuevo usuario.
-export const registerAuth =async(email:string,name:string,lastname:string,password:string): Promise<ServiceResponse> => {
+export const registerAuth =async(email:string,firstname:string,lastname:string,password:string): Promise<ServiceResponse> => {
     try {
-        const response = await apiManager.post("/register",{email,name,lastname,password});
+        const response = await apiManager.post("/register",{email,firstname,lastname,password});
         return {data: response.data};
     } catch (error:unknown) {
         // Devolver una acción indicando fallo
         if (axios.isAxiosError(error)) {
             return { error: error.response?.data?.message || "Error desconocido" };
-          } else {
+          } else {x
             return { error: "Error inesperado" };
           }
     }
