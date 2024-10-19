@@ -38,4 +38,8 @@ export const routes:Paths[] = [
    path:'/register',
     element:()=> import('../pages/Register.tsx'),
   },
+  {
+   path:'/pagos',
+    element:()=> import('../pages/pagoForm.tsx')
+  },
 ]

@@ -72,7 +72,7 @@ const Service = () => {
             Conecta con otros emprendedores, accede a recursos exclusivos y participa en eventos de networking.
           </p>
           <a
-            href="/register"
+            href="/pagos"
             className="text-white inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
           >
             Únete Ahora <Users className="ml-2 h-5 w-5" />
