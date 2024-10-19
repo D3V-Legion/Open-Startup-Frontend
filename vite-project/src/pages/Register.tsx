@@ -55,7 +55,7 @@ export default function Component() {
   }
 
   const redireccion =()=>{
-    navigate("admin")
+    navigate("/login");
   }
 
   //Validar si las contraseñas coinciden. 

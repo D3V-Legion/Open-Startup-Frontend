@@ -1,8 +1,11 @@
+import CardGestion from '@/components/global/CardGestion'
 import React from 'react'
 
 const Gestion = () => {
   return (
-    <div>Gestion</div>
+    <main className='m-8'>
+      <CardGestion/>
+    </main>
   )
 }
 

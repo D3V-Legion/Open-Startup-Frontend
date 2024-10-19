@@ -1,6 +1,5 @@
 import { LoginResponse, ServiceResponse } from "@/models/type";
 import apiManager from "./apiManager";
-import { User } from "@/models/models";
 import axios from "axios";
 import { useAuthStore } from "@/store/authStore";
 
@@ -14,7 +13,7 @@ export const registerAuth =async(email:string,firstname:string,lastname:string,p
         // Devolver una acción indicando fallo
         if (axios.isAxiosError(error)) {
             return { error: error.response?.data?.message || "Error desconocido" };
-          } else {x
+          } else {
             return { error: "Error inesperado" };
           }
     }

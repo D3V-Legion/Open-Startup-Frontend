@@ -3,7 +3,7 @@ import { Card } from '../ui/card'
 
 const CardColaboracion = () => {
   return (
-    <Card className='bg-foreground text-background p-6'>
+    <Card className='bg-foreground text-background p-6 '>
         <h3 className='font-bold'>Agregar barra de búsqueda</h3>
         <p>Debemos agregar una barra de búsqueda para filtrar tareas según el contenido de las tarjetas.</p>
         <div className="iconos flex w-100 gap-4 mt-2">
