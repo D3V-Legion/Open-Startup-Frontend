@@ -9,6 +9,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 
+import imagenCard1 from '../../public/ilustracion1-card.jpg'
+import imagenCard2 from '../../public/ilustracion2-card.jpg'
+import imagenCard3 from '../../public/ilustracion3-card.jpg'
+
 
 import "../App.css";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -66,44 +70,39 @@ const App: React.FC = () => {
         <div className="container mx-auto px-4 text-center">
           {/* Título */}
           <h2 className="text-4xl font-extrabold text-white dark:text-black mb-6 text-left">
-            Sección con Colores Invertidos
+          Potencia tu Startup con Soluciones Innovadoras
           </h2>
 
           {/* Descripción */}
           <p className="text-lg text-gray-200 dark:text-gray-900 mb-12 text-left">
-            Esta es una sección especial que invierte los colores según el tema
-            activo. Si el modo oscuro está activo, el fondo es blanco y el texto
-            es negro, y viceversa.
+          Descubre cómo nuestras soluciones modernas y efectivas pueden impulsar el crecimiento y la eficiencia de tu startup, llevándola al siguiente nivel en el competitivo mundo empresarial.
           </p>
-
+           
           {/* Tarjetas */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-background p-6 rounded-lg shadow-md text-left">
-              <h3 className="text-2xl font-bold text-foreground">Tarjeta 1</h3>
+              <h3 className="text-2xl font-bold text-foreground">Gestión Ágil</h3>
               <p className="text-gray-300 dark:text-gray-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Nesciunt consequatur neque iusto quam.
+              Implementa metodologías ágiles para optimizar procesos, aumentar la productividad y adaptarte rápidamente a los cambios del mercado.
               </p>
-              <Skeleton className="h-[180px] w-fullrounded-xl mt-3" />
+              <img src={imagenCard1} className="h-[180px] w-[100%] rounded-lg mt-3" />
             </div>
             <div className="bg-background p-6 rounded-lg shadow-md text-left">
-              <h3 className="text-2xl font-bold text-foreground">Tarjeta 2</h3>
+              <h3 className="text-2xl font-bold text-foreground">Análisis de Datos</h3>
               <p className="text-gray-300 dark:text-gray-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Nesciunt consequatur neque iusto quam.
+              Utiliza el poder del big data y la inteligencia artificial para tomar decisiones informadas y descubrir nuevas oportunidades de crecimiento.
               </p>
-              <Skeleton className="h-[180px] w-fullrounded-xl mt-3" />
+              <img src={imagenCard2} className="h-[180px] w-[100%] rounded-lg mt-3" />
             </div>
             <div className="bg-background p-6 rounded-lg shadow-md text-left">
-              <h3 className="text-2xl font-bold text-foreground">Tarjeta 3</h3>
+              <h3 className="text-2xl font-bold text-foreground">Automatización Inteligente</h3>
               <p className="text-gray-300 dark:text-gray-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Nesciunt consequatur neque iusto quam.
+              Optimiza tus operaciones con herramientas de automatización avanzadas, liberando tiempo para enfocarte en la innovación y el crecimiento estratégico.
               </p>
-              <Skeleton className="h-[180px] w-fullrounded-xl mt-3" />
+              <img src={imagenCard3} className="h-[180px] w-[100%] rounded-lg mt-3" />
             </div>
           </div>
-        </div>
+        </div>   
       </section>
       <section className="min-h-[85vh] relative py-12 lg:py-20 ">
         <h2 className="text-4xl font-extrabold mb-12 text-left ">
